@@ -1,0 +1,25 @@
+body, html{
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+.bold{
+    font-weight: bold;
+    font-size: 90px;
+}
+.job{
+    width:50vw;
+    margin: 0 auto;
+}
+.job h1{
+    font-size: 4.5rem;
+    font-weight: bolder; 
+}
+.job h2{
+    font-weight: 900;
+}
+.confirm-apply h3{
+    
+    padding: 15px 0;
+    font-weight: bold;
+}
