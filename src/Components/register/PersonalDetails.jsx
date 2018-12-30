@@ -78,7 +78,12 @@ export default class PersonalDetails extends Component {
                       <Col className="" md="4">
                         <FormGroup>
                           <Label for="exampleSelect">Gender</Label>
-                            <Input type="select" name="select" id="exampleSelect">
+                            <Input 
+                            type="select" 
+                            name="select" 
+                            id="exampleSelect"
+                            defaultValue={values.gender}
+                            onChange={handleChange('gender')}>
                               <option>Male</option>
                               <option>Female</option>
                               <option>Others</option>
