@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react'
-import {Row,Col,FormGroup, Input, Container, Progress} from 'reactstrap'
-import Select from 'react-select'
+import {Row,Col,FormGroup, Input, Container, Progress, Label} from 'reactstrap'
 import Hero from './Hero'
 export default class PersonalDetails extends Component {
       state={
@@ -78,18 +77,12 @@ export default class PersonalDetails extends Component {
                       </Col>
                       <Col className="" md="4">
                         <FormGroup>
-                          <label>
-                            Gender
-                          </label>
-                        <select
-                        className='form-control'
-                        defaultValue={values.gender}
-                        onChange={handleChange('gender')}>
-                          <option value="grapefruit">Grapefruit</option>
-                          <option value="lime">Lime</option>
-                          <option selected value="coconut">Coconut</option>
-                          <option value="mango">Mango</option>
-                        </select>
+                          <Label for="exampleSelect">Gender</Label>
+                            <Input type="select" name="select" id="exampleSelect">
+                              <option>Male</option>
+                              <option>Female</option>
+                              <option>Others</option>
+                            </Input>
                         </FormGroup>
                       </Col>
                       <Col className="" md="4">

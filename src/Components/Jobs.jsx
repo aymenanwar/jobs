@@ -9,7 +9,10 @@ import {
     CardTitle,
     Col,
     Row,
-    Container
+    Container,
+    FormGroup,
+    Label,
+    Input
   } from "reactstrap"
   import { css } from 'react-emotion';
 import { RingLoader } from 'react-spinners'
@@ -22,10 +25,16 @@ const override = css `
     z-index: 999;
 `;
 
+function searchingFor(term){
+  return function(x){
+    return x.title.toLowerCase().includes(term.toLowerCase()) || !term;
+  }
+}
+
 export default class Jobs extends Component {
-    
+
     state={
-        jobs:[], loading:true
+        jobs:[], loading:true, term:''
       }
       componentDidMount(){
         fetch('http://localhost:3004/jobs')
@@ -33,9 +42,12 @@ export default class Jobs extends Component {
         .then(data => 
           setTimeout(() => this.setState({ loading: false, jobs: data }), 1000))        
       }
-    
+      
+    searchHandler = e =>{
+      this.setState({term: e.target.value})
+    }
   render() {
-    const jobs = this.state.jobs.map(job => (
+    const jobs = this.state.jobs.filter(searchingFor(this.state.term)).map(job => (
 
        
          
@@ -58,7 +70,23 @@ export default class Jobs extends Component {
     return (
         
       <Container>
-        <Hero />
+        <Row><Hero /></Row>
+        
+        <Row>
+          <Col>
+            <FormGroup>
+          <Label for="exampleSearch">Search</Label>
+          <Input
+            type="search"
+            name="search"
+            id="exampleSearch"
+            placeholder="search job title"
+            onChange={this.searchHandler}
+          />
+        </FormGroup>
+          </Col>
+        
+        </Row>
         <RingLoader
           className={override}
           sizeUnit={"px"}
